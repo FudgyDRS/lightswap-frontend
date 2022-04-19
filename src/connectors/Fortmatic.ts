@@ -1,9 +1,9 @@
-import { ChainId } from '@pantherswap-libs/sdk'
+import { ChainId } from 'sdk'
 import { FortmaticConnector as FortmaticConnectorCore } from '@web3-react/fortmatic-connector'
 
 export const OVERLAY_READY = 'OVERLAY_READY'
 
-type FormaticSupportedChains = Extract<ChainId, ChainId.MAINNET | ChainId.BSCTESTNET>
+type FormaticSupportedChains = Extract<ChainId, ChainId.MAINNET | ChainId.h>
 
 const CHAIN_ID_NETWORK_ARGUMENT: { readonly [chainId in FormaticSupportedChains]: string | undefined } = {
   [ChainId.MAINNET]: undefined,

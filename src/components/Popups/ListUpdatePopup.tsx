@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react'
-import { diffTokenLists, TokenList } from '@uniswap/token-lists'
-import { Button, Text } from '@pantherswap-libs/uikit'
+import { diffTokenLists, TokenList } from 'token-lists/dist'
+import { Button, Text } from 'uikit'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../state'
 import { useRemovePopup } from '../../state/application/hooks'

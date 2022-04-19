@@ -16,7 +16,6 @@ import { RedirectPathToSwapOnly } from './Swap/redirects'
 import { EN, allLanguages } from '../constants/localisation/languageCodes'
 import { LanguageContext } from '../hooks/LanguageContext'
 import { TranslationsContext } from '../hooks/TranslationsContext'
-
 import Menu from '../components/Menu'
 
 const AppWrapper = styled.div`
@@ -56,9 +55,7 @@ const BodyWrapper = styled.div`
   }
 `
 
-const Marginer = styled.div`
-  margin-top: 5rem;
-`
+const Marginer = styled.div` margin-top: 5rem; `
 
 export default function App() {
   const [selectedLanguage, setSelectedLanguage] = useState<any>(undefined)
@@ -68,9 +65,7 @@ export default function App() {
   const projectId = parseInt(`${process.env.REACT_APP_CROWDIN_PROJECTID}`)
   const fileId = 6
 
-  const credentials: Credentials = {
-    token: apiKey,
-  }
+  const credentials: Credentials = { token: apiKey, }
 
   const stringTranslationsApi = new StringTranslations(credentials)
 
@@ -94,11 +89,8 @@ export default function App() {
     stringTranslationsApi
       .listLanguageTranslations(projectId, selectedLanguage.code, undefined, fileId, 200)
       .then((translationApiResponse) => {
-        if (translationApiResponse.data.length < 1) {
-          setTranslations(['error'])
-        } else {
-          setTranslations(translationApiResponse.data)
-        }
+        if (translationApiResponse.data.length < 1) { setTranslations(['error']) }
+        else { setTranslations(translationApiResponse.data) }
       })
       .then(() => setTranslatedLanguage(selectedLanguage))
       .catch((error) => {
@@ -108,9 +100,7 @@ export default function App() {
   }
 
   useEffect(() => {
-    if (selectedLanguage) {
-      fetchTranslationsForSelectedLanguage()
-    }
+    if (selectedLanguage) { fetchTranslationsForSelectedLanguage() }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedLanguage])
 

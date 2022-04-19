@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Text } from '@pantherswap-libs/uikit'
+import { Text } from 'uikit'
 import { Spinner } from '../Shared'
 import { AutoColumn } from '../Column'
 import { Wrapper, Section, ConfirmedIcon, ContentHeader } from './helpers'
@@ -33,4 +33,4 @@ const ConfirmationPendingContent = ({ onDismiss, pendingText }: ConfirmationPend
   )
 }
 
-export default ConfirmationPendingContent
+export default ConfirmationPendingContent;

@@ -1,12 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import { ButtonMenu, ButtonMenuItem } from '@pantherswap-libs/uikit'
-import TranslatedText from '../TranslatedText'
+import styled from 'styled-components';
+import React, { Link } from 'react-router-dom';
 
-const StyledNav = styled.div`
-  margin-bottom: 40px;
-`
+
+import { ButtonMenu, ButtonMenuItem } from 'uikit';
+import TranslatedText from '../TranslatedText';
+
+const StyledNav = styled.div` margin-bottom: 40px; `;
 
 const Nav = ({ activeIndex = 0 }: { activeIndex?: number }) => (
   <StyledNav>
@@ -30,4 +29,4 @@ const Nav = ({ activeIndex = 0 }: { activeIndex?: number }) => (
   </StyledNav>
 )
 
-export default Nav
+export default Nav;

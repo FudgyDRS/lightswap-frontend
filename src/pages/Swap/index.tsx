@@ -1,7 +1,9 @@
-import { CurrencyAmount, JSBI, Token, Trade } from '@pantherswap-libs/sdk'
+import { CurrencyAmount, JSBI, Token, Trade } from 'sdk/dist'
+import { CardBody, ArrowDownIcon, Button, IconButton, Text } from 'uikit/dist'
+
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { ArrowDown } from 'react-feather'
-import { CardBody, ArrowDownIcon, Button, IconButton, Text } from '@pantherswap-libs/uikit'
+
 import { ThemeContext } from 'styled-components'
 import AddressInputPanel from 'components/AddressInputPanel'
 import Card, { GreyCard } from 'components/Card'
@@ -164,12 +166,8 @@ const Swap = () => {
   const { priceImpactWithoutFee } = computeTradePriceBreakdown(trade)
 
   const handleSwap = useCallback(() => {
-    if (priceImpactWithoutFee && !confirmPriceImpactWithoutFee(priceImpactWithoutFee)) {
-      return
-    }
-    if (!swapCallback) {
-      return
-    }
+    if (priceImpactWithoutFee && !confirmPriceImpactWithoutFee(priceImpactWithoutFee)) { return; }
+    if (!swapCallback) { return; }
     setSwapState((prevState) => ({ ...prevState, attemptingTxn: true, swapErrorMessage: undefined, txHash: undefined }))
     swapCallback()
       .then((hash) => {
@@ -209,9 +207,7 @@ const Swap = () => {
     setSwapState((prevState) => ({ ...prevState, showConfirm: false }))
 
     // if there was a tx hash, we want to clear the input
-    if (txHash) {
-      onUserInput(Field.INPUT, '')
-    }
+    if (txHash) { onUserInput(Field.INPUT, '') }
   }, [onUserInput, txHash, setSwapState])
 
   const handleAcceptChanges = useCallback(() => {
@@ -223,8 +219,8 @@ const Swap = () => {
   const checkForSyrup = useCallback(
     (selected: string, purchaseType: string) => {
       if (selected === 'syrup') {
-        setIsSyrup(true)
-        setSyrupTransactionType(purchaseType)
+        setIsSyrup(true);
+        setSyrupTransactionType(purchaseType);
       }
     },
     [setIsSyrup, setSyrupTransactionType]
@@ -234,25 +230,19 @@ const Swap = () => {
     (inputCurrency) => {
       setApprovalSubmitted(false) // reset 2 step UI for approvals
       onCurrencySelection(Field.INPUT, inputCurrency)
-      if (inputCurrency.symbol.toLowerCase() === 'syrup') {
-        checkForSyrup(inputCurrency.symbol.toLowerCase(), 'Selling')
-      }
+      if (inputCurrency.symbol.toLowerCase() === 'syrup') { checkForSyrup(inputCurrency.symbol.toLowerCase(), 'Selling') }
     },
     [onCurrencySelection, setApprovalSubmitted, checkForSyrup]
   )
 
   const handleMaxInput = useCallback(() => {
-    if (maxAmountInput) {
-      onUserInput(Field.INPUT, maxAmountInput.toExact())
-    }
+    if (maxAmountInput) { onUserInput(Field.INPUT, maxAmountInput.toExact()) }
   }, [maxAmountInput, onUserInput])
 
   const handleOutputSelect = useCallback(
     (outputCurrency) => {
       onCurrencySelection(Field.OUTPUT, outputCurrency)
-      if (outputCurrency.symbol.toLowerCase() === 'syrup') {
-        checkForSyrup(outputCurrency.symbol.toLowerCase(), 'Buying')
-      }
+      if (outputCurrency.symbol.toLowerCase() === 'syrup') { checkForSyrup(outputCurrency.symbol.toLowerCase(), 'Buying') }
     },
     [onCurrencySelection, checkForSyrup]
   )
@@ -434,17 +424,8 @@ const Swap = () => {
               ) : (
                 <Button
                   onClick={() => {
-                    if (isExpertMode) {
-                      handleSwap()
-                    } else {
-                      setSwapState({
-                        tradeToConfirm: trade,
-                        attemptingTxn: false,
-                        swapErrorMessage: undefined,
-                        showConfirm: true,
-                        txHash: undefined,
-                      })
-                    }
+                    if (isExpertMode) { handleSwap() }
+                    else { setSwapState({ tradeToConfirm: trade, attemptingTxn: false, swapErrorMessage: undefined, showConfirm: true, txHash: undefined, }) }
                   }}
                   id="swap-button"
                   disabled={!isValid || (priceImpactSeverity > 3 && !isExpertMode) || !!swapCallbackError}

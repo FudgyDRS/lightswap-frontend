@@ -1,10 +1,12 @@
-import { Currency, CurrencyAmount, Fraction, Percent } from '@pantherswap-libs/sdk'
+import { Currency, CurrencyAmount, Fraction, Percent } from 'sdk'
+import { Button } from 'uikit'
+
 import React from 'react'
-import { Button } from '@pantherswap-libs/uikit'
-import { RowBetween, RowFixed } from '../../components/Row'
-import CurrencyLogo from '../../components/CurrencyLogo'
-import { Field } from '../../state/mint/actions'
-import { TYPE } from '../../components/Shared'
+
+import { RowBetween, RowFixed } from  '../../components/Row'
+import CurrencyLogo from              '../../components/CurrencyLogo'
+import { TYPE } from                  '../../components/Shared'
+import { Field } from                 '../../state/mint/actions'
 
 const { body: Body } = TYPE
 
@@ -49,9 +51,10 @@ export function ConfirmAddModalBottom({
       </RowBetween>
       <RowBetween style={{ justifyContent: 'flex-end' }}>
         <Body>
-          {`1 ${currencies[Field.CURRENCY_B]?.symbol} = ${price?.invert().toSignificant(4)} ${
-            currencies[Field.CURRENCY_A]?.symbol
-          }`}
+          {`1 
+            ${currencies[Field.CURRENCY_B]?.symbol} = ${price?.invert().toSignificant(4)}
+            ${currencies[Field.CURRENCY_A]?.symbol}
+          `}
         </Body>
       </RowBetween>
       <RowBetween>

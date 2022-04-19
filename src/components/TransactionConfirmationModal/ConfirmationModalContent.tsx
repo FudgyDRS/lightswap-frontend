@@ -20,4 +20,4 @@ const ConfirmationModalContent = ({ title, bottomContent, onDismiss, topContent 
   )
 }
 
-export default ConfirmationModalContent
+export default ConfirmationModalContent;

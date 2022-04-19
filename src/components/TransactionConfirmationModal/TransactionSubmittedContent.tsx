@@ -1,11 +1,13 @@
-import { ChainId } from '@pantherswap-libs/sdk'
-import React, { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
-import { Button, LinkExternal } from '@pantherswap-libs/uikit'
-import { ArrowUpCircle } from 'react-feather'
-import { AutoColumn } from '../Column'
-import { getBscScanLink } from '../../utils'
-import { Wrapper, Section, ConfirmedIcon, ContentHeader } from './helpers'
+import { Button, LinkExternal } from 'uikit';
+import { ChainId } from 'sdk';
+
+import React, { useContext } from 'react';
+import { ThemeContext } from 'styled-components';
+import { ArrowUpCircle } from 'react-feather';
+
+import { AutoColumn } from '../Column';
+import { getBscScanLink } from '../../utils';
+import { Wrapper, Section, ConfirmedIcon, ContentHeader } from './helpers';
 
 type TransactionSubmittedContentProps = {
   onDismiss: () => void
@@ -14,7 +16,7 @@ type TransactionSubmittedContentProps = {
 }
 
 const TransactionSubmittedContent = ({ onDismiss, chainId, hash }: TransactionSubmittedContentProps) => {
-  const theme = useContext(ThemeContext)
+  const theme = useContext(ThemeContext);
 
   return (
     <Wrapper>
@@ -36,4 +38,4 @@ const TransactionSubmittedContent = ({ onDismiss, chainId, hash }: TransactionSu
   )
 }
 
-export default TransactionSubmittedContent
+export default TransactionSubmittedContent;

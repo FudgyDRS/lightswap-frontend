@@ -1,8 +1,10 @@
 import React, { useCallback, useState } from 'react'
 import { BigNumber } from '@ethersproject/bignumber'
 import { TransactionResponse } from '@ethersproject/providers'
-import { Currency, currencyEquals, ETHER, TokenAmount, WETH } from '@pantherswap-libs/sdk'
-import { Button, CardBody, AddIcon, Text as UIKitText } from '@pantherswap-libs/uikit'
+
+import { Currency, currencyEquals, ETHER, TokenAmount, WETH } from 'sdk'
+import { Button, CardBody, AddIcon, Text as UIKitText } from 'uikit'
+
 import { RouteComponentProps } from 'react-router-dom'
 import { LightCard } from 'components/Card'
 import { AutoColumn, ColumnCenter } from 'components/Column'
@@ -299,7 +301,7 @@ export default function AddLiquidity({
             onDismiss={handleDismissConfirmation}
             attemptingTxn={attemptingTxn}
             hash={txHash}
-            content={() => (
+            content={() => ( 
               <ConfirmationModalContent
                 title={noLiquidity ? 'You are creating a pool' : 'You will receive'}
                 onDismiss={handleDismissConfirmation}

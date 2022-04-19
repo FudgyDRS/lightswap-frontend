@@ -1,4 +1,5 @@
-import { Text } from '@pantherswap-libs/uikit'
+import { Text } from 'uikit'
+
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
@@ -6,9 +7,7 @@ export const Wrapper = styled.div`
 `
 
 export const ClickableText = styled(Text)`
-  :hover {
-    cursor: pointer;
-  }
+  :hover { cursor: pointer; }
   color: ${({ theme }) => theme.colors.primary};
 `
 export const MaxButton = styled.button<{ width: string }>`
@@ -17,17 +16,13 @@ export const MaxButton = styled.button<{ width: string }>`
   border: 1px solid ${({ theme }) => theme.colors.primaryDark};
   border-radius: 0.5rem;
   font-size: 1rem;
-  ${({ theme }) => theme.mediaQueries.sm} {
-    padding: 0.25rem 0.5rem;
-  }
+  ${({ theme }) => theme.mediaQueries.sm} { padding: 0.25rem 0.5rem; }
   font-weight: 500;
   cursor: pointer;
   margin: 0.25rem;
   overflow: hidden;
   color: ${({ theme }) => theme.colors.primary};
-  :hover {
-    border: 1px solid ${({ theme }) => theme.colors.primary};
-  }
+  :hover { border: 1px solid ${({ theme }) => theme.colors.primary}; }
   :focus {
     border: 1px solid ${({ theme }) => theme.colors.primary};
     outline: none;
@@ -43,14 +38,8 @@ export const Dots = styled.span`
     text-align: left;
   }
   @keyframes ellipsis {
-    0% {
-      content: '.';
-    }
-    33% {
-      content: '..';
-    }
-    66% {
-      content: '...';
-    }
+    0%  { content: '.';   }
+    33% { content: '..';  }
+    66% { content: '...'; }
   }
 `

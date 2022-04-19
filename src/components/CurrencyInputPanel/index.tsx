@@ -1,24 +1,25 @@
-import React, { useState, useCallback } from 'react'
-import { Currency, Pair } from '@pantherswap-libs/sdk'
-import { Button, ChevronDownIcon, Text } from '@pantherswap-libs/uikit'
-import styled from 'styled-components'
-import { darken } from 'polished'
-import { useCurrencyBalance } from '../../state/wallet/hooks'
-import CurrencySearchModal from '../SearchModal/CurrencySearchModal'
-import CurrencyLogo from '../CurrencyLogo'
-import DoubleCurrencyLogo from '../DoubleLogo'
-import { RowBetween } from '../Row'
-import { Input as NumericalInput } from '../NumericalInput'
-import { useActiveWeb3React } from '../../hooks'
-import TranslatedText from "../TranslatedText"
-import { TranslateString } from '../../utils/translateTextHelpers'
+import { Currency, Pair } from 'sdk/dist';
+import { Button, ChevronDownIcon, Text } from 'uikit';
+
+import React, { useState, useCallback } from 'react';
+import styled from 'styled-components';
+import { darken } from 'polished';
+import { useCurrencyBalance } from '../../state/wallet/hooks';
+import CurrencySearchModal from '../SearchModal/CurrencySearchModal';
+import CurrencyLogo from '../CurrencyLogo';
+import DoubleCurrencyLogo from '../DoubleLogo';
+import { RowBetween } from '../Row';
+import { Input as NumericalInput } from '../NumericalInput';
+import { useActiveWeb3React } from '../../hooks';
+import TranslatedText from "../TranslatedText";
+import { TranslateString } from '../../utils/translateTextHelpers';
 
 const InputRow = styled.div<{ selected: boolean }>`
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   padding: ${({ selected }) => (selected ? '0.75rem 0.5rem 0.75rem 1rem' : '0.75rem 0.75rem 0.75rem 1rem')};
-`
+`;
 
 const CurrencySelect = styled.button<{ selected: boolean }>`
   align-items: center;
@@ -34,11 +35,10 @@ const CurrencySelect = styled.button<{ selected: boolean }>`
   border: none;
   padding: 0 0.5rem;
 
-  :focus,
-  :hover {
+  :focus, :hover {
     background-color: ${({ theme }) => darken(0.05, theme.colors.input)};
   }
-`
+`;
 
 const LabelRow = styled.div`
   display: flex;
@@ -52,13 +52,13 @@ const LabelRow = styled.div`
     cursor: pointer;
     color: ${({ theme }) => darken(0.2, theme.colors.textSubtle)};
   }
-`
+`;
 
 const Aligner = styled.span`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`
+`;
 
 const InputPanel = styled.div<{ hideInput?: boolean }>`
   display: flex;
@@ -67,13 +67,13 @@ const InputPanel = styled.div<{ hideInput?: boolean }>`
   border-radius: ${({ hideInput }) => (hideInput ? '8px' : '20px')};
   background-color: ${({ theme }) => theme.colors.background};
   z-index: 1;
-`
+`;
 
 const Container = styled.div<{ hideInput: boolean }>`
   border-radius: 16px;
   background-color: ${({ theme }) => theme.colors.input};
   box-shadow: ${({ theme }) => theme.shadows.inset};
-`
+`;
 
 interface CurrencyInputPanelProps {
   value: string
@@ -108,9 +108,9 @@ export default function CurrencyInputPanel({
   id,
   showCommonBases
 }: CurrencyInputPanelProps) {
-  const [modalOpen, setModalOpen] = useState(false)
-  const { account } = useActiveWeb3React()
-  const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, currency ?? undefined)
+  const [modalOpen, setModalOpen] = useState(false);
+  const { account } = useActiveWeb3React();
+  const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, currency ?? undefined);
 
   const handleDismissSearch = useCallback(() => {
     setModalOpen(false)
@@ -172,9 +172,7 @@ export default function CurrencyInputPanel({
               ) : (
                 <Text>
                   {(currency && currency.symbol && currency.symbol.length > 20
-                    ? `${currency.symbol.slice(0, 4)
-                      }...${
-                      currency.symbol.slice(currency.symbol.length - 5, currency.symbol.length)}`
+                    ? `${currency.symbol.slice(0, 4)}...${currency.symbol.slice(currency.symbol.length - 5, currency.symbol.length)}`
                     : currency?.symbol) || <TranslatedText translationId={82}>Select a currency</TranslatedText>}
                 </Text>
               )}

@@ -1,14 +1,14 @@
-import React, { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
-import { Button, Text } from '@pantherswap-libs/uikit'
-import { AlertTriangle } from 'react-feather'
-import { AutoColumn } from '../Column'
-import { Wrapper, Section, BottomSection, ContentHeader } from './helpers'
+import React, { useContext } from 'react';
+import { ThemeContext } from 'styled-components';
+import { Button, Text } from 'uikit';
+import { AlertTriangle } from 'react-feather';
+import { AutoColumn } from '../Column';
+import { Wrapper, Section, BottomSection, ContentHeader } from './helpers';
 
 type TransactionErrorContentProps = { message: string; onDismiss: () => void }
 
 const TransactionErrorContent = ({ message, onDismiss }: TransactionErrorContentProps) => {
-  const theme = useContext(ThemeContext)
+  const theme = useContext(ThemeContext);
   return (
     <Wrapper>
       <Section>
@@ -27,4 +27,4 @@ const TransactionErrorContent = ({ message, onDismiss }: TransactionErrorContent
   )
 }
 
-export default TransactionErrorContent
+export default TransactionErrorContent;
